@@ -1,10 +1,8 @@
-HEAD := src/libft/libft.h \
-		src/importer.h
+HEAD := src/importer.h
 NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBFTDIR = src/libft/
-OBJS_DIR = obj/
 LIBRARY = src/libft/libft.a
 LIBRARY_OBJS = src/libft/objs
 
@@ -45,6 +43,7 @@ SRCS =  src/error_handle/is_dup.c \
 		src/stack_controller/get_index.c \
 		src/stack_controller/get_last.c \
 		src/stack_controller/get_stack_size.c \
+		src/stack_controller/stack_add.c \
 		src/stack_controller/stack_from.c \
 		src/stack_controller/stack_max.c \
 		src/stack_controller/stack_min.c \
