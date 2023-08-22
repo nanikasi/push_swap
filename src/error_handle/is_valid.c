@@ -41,9 +41,9 @@ int	is_valid(int argc, char **argv)
 	if (argc == 2)
 	{
 		tmp = ft_split(argv[1], ' ');
-		if (!is_num_str(tmp))
+		if (!is_num_str(*tmp))
 			return (0);
-		ft_freestr(tmp);
+		free_str(tmp);
 		free(tmp);
 		return (1);
 	}

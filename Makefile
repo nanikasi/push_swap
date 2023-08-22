@@ -2,14 +2,13 @@ HEAD := src/libft/libft.h \
 		src/importer.h
 NAME = push_swap
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 LIBFTDIR = src/libft/
-OBJ_DIR = obj/
+OBJS_DIR = obj/
 LIBRARY = src/libft/libft.a
 LIBRARY_OBJS = src/libft/objs
 
-SRCS =  src/main.c \
-		src/error_handle/is_dup.c \
+SRCS =  src/error_handle/is_dup.c \
 		src/error_handle/is_valid.c \
 		src/error_handle/put_error.c \
 		src/stack_controller/actual_control/do_rarb.c \
@@ -49,26 +48,26 @@ SRCS =  src/main.c \
 		src/stack_controller/stack_from.c \
 		src/stack_controller/stack_max.c \
 		src/stack_controller/stack_min.c \
-		src/stack_controller/utils/free_str.c
+		src/utils/free_str.c \
+		src/main.c
 
 OBJS = ${SRCS:.c=.o}
-PATH_OBJS = $(addprefix $(OBJS_DIR),$(OBJS))
 
-$(OBJS_DIR)%.o: %.c
-	@mkdir -p $(OBJS_DIR)
-	@$(CC) $(CFLAGS) -I $(HEAD) -c $< -o $@
-	@echo "Compiling $(<)."
+all: $(NAME)
+
+$(NAME): $(LIBRARY) $(OBJS)
+	@$(CC) -I $(HEAD) $(OBJS) $(LIBRARY) -o $(NAME)
+	@echo "push swap is Ready."
+
+.c.o:
+	${CC} -c $< -o ${<:.c=.o}
 
 $(LIBRARY):
 	@make --directory src/libft
 	@echo "libft.a is Ready."
 
-$(NAME): $(LIBRARY) $(PATH_OBJS)
-	@$(CC) -I $(HEAD) $(PATH_OBJS) $(LIBRARY) -o $(NAME)
-	@echo "push swap is Ready."
-
 clean:
-	@rm -rf $(OBJS_DIR)
+	@rm -rf $(OBJS)
 	@echo "Removed library objs."
 	@rm -rf $(LIBRARY_OBJS)
 	@echo "Removed objs."

@@ -9,7 +9,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include "stack.h"
-# include "../libft/libft.h"
+# include "libft/libft.h"
 
 // error handle
 int	is_dup(t_stack *a);
