@@ -16,6 +16,8 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 
+	if (argc < 2)
+		return (0);
 	if (!is_valid(argc, argv))
 		put_error();
 	stack_a = stack_from(argc, argv);

@@ -45,17 +45,17 @@ int	is_valid(int argc, char **argv)
 {
 	char	**tmp;
 	int		i;
-	int		tmp_num;
 
-	if (argc < 2)
-		return (0);
 	if (argc == 2)
 	{
 		tmp = ft_split(argv[1], ' ');
-		if (!is_num_str(*tmp))
+		if (tmp == NULL || tmp[0] == NULL)
 			return (0);
+		i = !is_num_str(*tmp);
 		free_str(tmp);
 		free(tmp);
+		if (i)
+			return (0);
 		return (1);
 	}
 	i = 1;
